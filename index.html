@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Completa ACS – Examen Teórico</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 15px; line-height: 1.7; color: #1a1a1a; background: #f5f5f0; }
+
+  /* HEADER */
+  .header { background: #1a3a5c; color: white; padding: 2rem; text-align: center; }
+  .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .header p { color: #a8c8e8; font-size: 1rem; }
+
+  /* NAV */
+  .nav { background: #0f2840; padding: 0.75rem 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; position: sticky; top: 0; z-index: 100; }
+  .nav a { color: #a8c8e8; text-decoration: none; font-size: 0.82rem; padding: 4px 10px; border-radius: 4px; border: 1px solid #2a4a6c; transition: background 0.2s; white-space: nowrap; }
+  .nav a:hover { background: #1a3a5c; color: white; }
+
+  /* MAIN LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  /* SECTION HEADERS */
+  .section-block { margin-bottom: 3rem; }
+  .section-title { background: #1a3a5c; color: white; padding: 0.75rem 1.25rem; border-radius: 8px 8px 0 0; font-size: 1.15rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; }
+  .section-body { background: white; border: 1px solid #d0d8e4; border-top: none; border-radius: 0 0 8px 8px; padding: 1.5rem; }
+
+  /* SUBSECTIONS */
+  .sub-title { font-size: 1rem; font-weight: 700; color: #1a3a5c; border-left: 4px solid #1a7fc1; padding-left: 0.75rem; margin: 1.5rem 0 0.75rem; }
+  .sub-title:first-child { margin-top: 0; }
+
+  /* CARDS GRID */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0; }
+  .card { background: #f0f6fb; border: 1px solid #c0d8ec; border-radius: 8px; padding: 1rem; }
+  .card h4 { color: #0f4c81; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .card p, .card li { font-size: 0.88rem; color: #333; line-height: 1.6; }
+  .card ul { padding-left: 1.2rem; }
+
+  /* TRAPS */
+  .trap { background: #fff8e1; border: 1px solid #f5c842; border-left: 5px solid #f5c842; border-radius: 6px; padding: 0.85rem 1rem; margin: 1rem 0; font-size: 0.9rem; }
+  .trap strong { color: #7a5a00; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+  th { background: #1a3a5c; color: white; padding: 8px 12px; text-align: left; }
+  td { padding: 7px 12px; border-bottom: 1px solid #e0e8f0; }
+  tr:nth-child(even) { background: #f5f8fc; }
+  tr:hover { background: #eaf2fb; }
+
+  /* CODE */
+  code { background: #1e2a38; color: #82cfff; font-family: monospace; font-size: 0.85rem; padding: 2px 6px; border-radius: 4px; }
+  .code-block { background: #1e2a38; color: #c9d1d9; font-family: monospace; font-size: 0.82rem; padding: 1rem; border-radius: 8px; margin: 0.75rem 0; overflow-x: auto; line-height: 1.7; }
+  .code-block .kw { color: #ff7b72; }
+  .code-block .str { color: #a5d6ff; }
+  .code-block .cm { color: #8b949e; }
+
+  /* BADGES */
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700; margin: 2px; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-purple { background: #ede9fe; color: #5b21b6; }
+
+  /* KEY FORMULA */
+  .formula { background: #e8f4fd; border: 2px solid #1a7fc1; border-radius: 8px; padding: 1rem 1.25rem; text-align: center; margin: 1rem 0; }
+  .formula .eq { font-size: 1.4rem; font-weight: 700; color: #0d4f8c; font-family: serif; }
+  .formula small { display: block; color: #555; margin-top: 0.4rem; font-size: 0.82rem; }
+
+  /* V-MODEL DIAGRAM */
+  .v-model { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .v-left { background: #e8f0fe; border-radius: 8px; padding: 1rem; }
+  .v-right { background: #e8fef0; border-radius: 8px; padding: 1rem; }
+  .v-left h4 { color: #1565c0; margin-bottom: 0.5rem; font-size: 0.9rem; }
+  .v-right h4 { color: #1b5e20; margin-bottom: 0.5rem; font-size: 0.9rem; }
+  .v-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; padding: 3px 0; }
+  .arrow { font-size: 1.1rem; color: #888; }
+  .v-center { text-align: center; padding: 0.5rem; }
+
+  /* COMPARISON TABLE */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  .compare-col { border-radius: 8px; padding: 1rem; }
+  .col-css { background: #e8fef0; border: 1px solid #86efac; }
+  .col-xpath { background: #ede9fe; border: 1px solid #c4b5fd; }
+  .compare-col h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .col-css h4 { color: #14532d; }
+  .col-xpath h4 { color: #3b0764; }
+  .compare-col li { font-size: 0.86rem; line-height: 1.7; }
+
+  /* APDEX SCALE */
+  .apdex-bar { display: flex; border-radius: 6px; overflow: hidden; margin: 0.5rem 0; font-size: 0.82rem; }
+  .apdex-seg { padding: 6px 10px; flex: 1; text-align: center; color: white; font-weight: 700; }
+
+  /* LOCATORS TABLE */
+  .loc-card { background: #f8f9ff; border: 1px solid #d0d8f0; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; }
+  .loc-card h4 { color: #3730a3; font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .loc-card code { font-size: 0.8rem; }
+
+  /* INTEGRATION STRATEGIES */
+  .strategy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0; }
+  .strategy-card { border-radius: 8px; padding: 1rem; font-size: 0.86rem; }
+  .s-topdown { background: #e8f4fd; border: 1px solid #93c5fd; }
+  .s-bottomup { background: #fef3c7; border: 1px solid #fcd34d; }
+  .s-bigbang { background: #fee2e2; border: 1px solid #fca5a5; }
+  .strategy-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .s-topdown h4 { color: #1e40af; }
+  .s-bottomup h4 { color: #92400e; }
+  .s-bigbang h4 { color: #991b1b; }
+
+  /* QUICK REF */
+  .qref { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1rem; font-size: 0.86rem; }
+  .qref dt { font-weight: 700; color: #1a3a5c; margin-top: 0.5rem; }
+  .qref dd { margin-left: 1rem; color: #444; }
+
+  @media (max-width: 700px) {
+    .v-model, .compare-grid, .strategy-grid { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 Guía Completa – Examen Teórico ACS</h1>
+  <p>Fundamentos de Pruebas · JMeter · Métricas · Selenium · Localizadores HTML</p>
+</div>
+
+<nav class="nav">
+  <a href="#fundamentos">1. Fundamentos</a>
+  <a href="#verificacion">2. Verif. / Validación</a>
+  <a href="#vmodel">3. Ciclo V</a>
+  <a href="#unitarias">4. Unitarias</a>
+  <a href="#integracion">5. Integración</a>
+  <a href="#sistema">6. Sistema / UAT</a>
+  <a href="#complementarias">7. Complementarias</a>
+  <a href="#jmeter">8. JMeter</a>
+  <a href="#metricas">9. Métricas</a>
+  <a href="#apdex">10. APDEX</a>
+  <a href="#selenium">11. Selenium</a>
+  <a href="#html">12. HTML</a>
+  <a href="#locators">13. Locators</a>
+  <a href="#xpath">14. XPath</a>
+  <a href="#css">15. CSS Selectors</a>
+</nav>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 1: FUNDAMENTOS -->
+<!-- ============================================================ -->
+<div class="section-block" id="fundamentos">
+  <div class="section-title">🔹 1. Fundamentos y Clasificación de Pruebas</div>
+  <div class="section-body">
+
+    <div class="sub-title">1.1 Clasificación Por Nivel</div>
+    <div class="cards">
+      <div class="card">
+        <h4>🔬 Pruebas Unitarias (Componentes)</h4>
+        <ul>
+          <li>Evalúan la unidad mínima de código (función, método, clase)</li>
+          <li>Ejecutadas por el desarrollador</li>
+          <li>Caja blanca · Aisladas · Rápidas · Automatizadas</li>
+          <li>Se basan en el diseño detallado</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🔗 Pruebas de Integración</h4>
+        <ul>
+          <li>Verifican la interacción entre módulos</li>
+          <li>Detectan fallos de interfaces, contratos y flujos de datos</li>
+          <li>Estrategias: Top-Down, Bottom-Up, Big Bang</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🖥️ Pruebas de Sistema</h4>
+        <ul>
+          <li>Validan el sistema completo en entorno similar al real</li>
+          <li>Flujos end-to-end · Caja negra</li>
+          <li>Las realiza el equipo de QA (no el usuario final)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>✅ Pruebas de Aceptación (UAT)</h4>
+        <ul>
+          <li>Realizadas por usuario / cliente / stakeholders</li>
+          <li>Validan que cumple objetivos de negocio</li>
+          <li>Formales · Caja negra · Previas a producción</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">1.2 Clasificación Por Objetivo</div>
+    <table>
+      <tr><th>Tipo</th><th>¿Qué evalúa?</th><th>Ejemplos</th></tr>
+      <tr><td><span class="badge badge-blue">Funcionales</span></td><td>Qué hace el sistema (requisitos funcionales)</td><td>Login, cálculo de totales, búsqueda</td></tr>
+      <tr><td><span class="badge badge-purple">No funcionales</span></td><td>Cómo lo hace: rendimiento, seguridad, usabilidad</td><td>Carga 1000 usuarios, tiempo respuesta &lt;2s</td></tr>
+    </table>
+
+    <div class="trap">
+      <strong>⚠️ TRAMPA FRECUENTE:</strong> Las pruebas unitarias NO prueban integración entre módulos ni interfaz de usuario. Son exclusivamente para la lógica interna de una unidad.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 2: VERIFICACIÓN Y VALIDACIÓN -->
+<!-- ============================================================ -->
+<div class="section-block" id="verificacion">
+  <div class="section-title">🔹 2. Verificación vs. Validación</div>
+  <div class="section-body">
+    <div class="cards">
+      <div class="card">
+        <h4>📋 Verificación — "¿Correctamente?"</h4>
+        <ul>
+          <li>¿Estamos construyendo el producto <strong>correctamente</strong>?</li>
+          <li>Se centra en procesos y artefactos (documentos, código)</li>
+          <li>Técnicas <strong>estáticas</strong>: revisiones, inspecciones, walkthroughs</li>
+          <li>Valida que el <strong>proceso</strong> sea el esperado</li>
+          <li>Se aplica en todo el ciclo de vida</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>✔️ Validación — "¿Correcto?"</h4>
+        <ul>
+          <li>¿Estamos construyendo el producto <strong>correcto</strong>?</li>
+          <li>Se centra en el comportamiento frente a necesidades del usuario</li>
+          <li>Técnicas <strong>dinámicas</strong>: ejecución de pruebas</li>
+          <li>Valida que el <strong>producto</strong> sea el esperado</li>
+          <li>Comprueba la idoneidad para el uso esperado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="trap">
+      <strong>⚠️ REGLA NEMOTÉCNICA:</strong><br>
+      Verificación → "correcta<strong>mente</strong>" → proceso → estática<br>
+      Validación → "<strong>correcto</strong>" → producto → dinámica
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 3: CICLO EN V -->
+<!-- ============================================================ -->
+<div class="section-block" id="vmodel">
+  <div class="section-title">🔹 3. Ciclo de Vida en V (V-Model)</div>
+  <div class="section-body">
+    <p>Modelo que relaciona cada fase de <strong>desarrollo</strong> (izquierda) con su correspondiente fase de <strong>pruebas</strong> (derecha). Las pruebas se diseñan desde las primeras fases.</p>
+
+    <div class="v-model" style="margin-top:1rem;">
+      <div class="v-left">
+        <h4>⬇️ Actividades Analíticas (Desarrollo)</h4>
+        <div class="v-row"><span>1. Definición de Requisitos</span></div>
+        <div class="v-row"><span>2. Diseño Funcional del Sistema</span></div>
+        <div class="v-row"><span>3. Diseño Técnico del Sistema</span></div>
+        <div class="v-row"><span>4. Especificación de Componentes</span></div>
+        <div class="v-row" style="margin-top:0.5rem; font-weight:700; color:#1565c0;">⬇️ Programación</div>
+      </div>
+      <div class="v-right">
+        <h4>⬆️ Actividades Constructivas (Pruebas)</h4>
+        <div class="v-row"><span>↔ Pruebas de Aceptación (UAT)</span></div>
+        <div class="v-row"><span>↔ Pruebas de Sistema</span></div>
+        <div class="v-row"><span>↔ Pruebas de Integración</span></div>
+        <div class="v-row"><span>↔ Pruebas de Componentes (Unitarias)</span></div>
+        <div class="v-row" style="margin-top:0.5rem; font-weight:700; color:#1b5e20;">⬆️ Programación</div>
+      </div>
+    </div>
+
+    <table style="margin-top:1rem;">
+      <tr><th>Fase de Desarrollo</th><th>Fase de Pruebas Correspondiente</th></tr>
+      <tr><td>Definición de Requisitos</td><td>Pruebas de Aceptación (UAT)</td></tr>
+      <tr><td>Diseño Funcional del Sistema</td><td>Pruebas de Sistema</td></tr>
+      <tr><td>Diseño Técnico (Arquitectura)</td><td>Pruebas de Integración</td></tr>
+      <tr><td>Especificación de Componentes</td><td>Pruebas Unitarias / Componentes</td></tr>
+    </table>
+
+    <div class="trap">
+      <strong>⚠️ TRAMPAS FRECUENTES:</strong><br>
+      • Integración ↔ Diseño Técnico (Arquitectura) — NO con Diseño de Sistema<br>
+      • UAT ↔ Requisitos — NO con ninguna otra fase<br>
+      • La idea clave: las pruebas se DISEÑAN desde las fases tempranas, aunque se EJECUTEN después
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 4: PRUEBAS UNITARIAS -->
+<!-- ============================================================ -->
+<div class="section-block" id="unitarias">
+  <div class="section-title">🔹 4. Pruebas de Componentes (Unitarias)</div>
+  <div class="section-body">
+    <div class="sub-title">Definición y características</div>
+    <p>Se realizan sobre una unidad de código claramente definida (función, método, clase). El test debe ser:</p>
+    <div class="cards" style="margin-top:0.75rem;">
+      <div class="card">
+        <h4>FIRST Principles</h4>
+        <ul>
+          <li><strong>F</strong>ast — Rápidos de ejecutar</li>
+          <li><strong>I</strong>ndependent — Sin dependencias entre sí</li>
+          <li><strong>R</strong>epeatable — Mismo resultado siempre</li>
+          <li><strong>S</strong>elf-validating — Pasan o fallan, sin ambigüedad</li>
+          <li><strong>T</strong>imely — Escritos junto al código</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>También debe ser</h4>
+        <ul>
+          <li><strong>Atómico</strong> — Prueba la mínima funcionalidad posible</li>
+          <li><strong>Inocuo</strong> — No tiene efectos secundarios</li>
+          <li><strong>Automatizable</strong></li>
+          <li>Tests con if/else se separan en 2 casos de prueba</li>
+          <li>Son pruebas de <strong>Caja Blanca</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>¿Quién las realiza?</h4>
+        <ul>
+          <li>Generalmente el área que construyó el módulo (desarrolladores)</li>
+          <li>Se basan en el diseño detallado</li>
+          <li>Comienzan una vez codificado, compilado y revisado el módulo</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sub-title">¿Qué prueba?</div>
+    <ul style="padding-left:1.5rem; font-size:0.9rem; line-height:1.9;">
+      <li>La lógica interna del componente (ej. una función)</li>
+      <li>El manejo de errores (valores límite, entradas inválidas)</li>
+      <li>Que se cumpla la especificación del componente</li>
+    </ul>
+    <div class="trap">
+      <strong>⚠️ NO prueba:</strong> integración entre módulos, interfaces de usuario, ni comportamiento del sistema completo.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 5: INTEGRACIÓN -->
+<!-- ============================================================ -->
+<div class="section-block" id="integracion">
+  <div class="section-title">🔹 5. Pruebas de Integración</div>
+  <div class="section-body">
+    <p>Su objetivo es evidenciar defectos en las <strong>interfaces e interacciones</strong> entre componentes o sistemas integrados. Verifican que partes que funcionan bien aisladas también funcionen en conjunto.</p>
+
+    <div class="sub-title">Estrategias de Integración</div>
+    <div class="strategy-grid">
+      <div class="strategy-card s-topdown">
+        <h4>⬇️ Top-Down</h4>
+        <ul style="padding-left:1rem; font-size:0.84rem; line-height:1.8;">
+          <li>Se prueban primero los módulos de <strong>mayor nivel</strong></li>
+          <li>Se avanza hacia los módulos inferiores</li>
+          <li>Usa <strong>Stubs</strong> para simular componentes no disponibles</li>
+          <li>Ventaja: valida la lógica de control desde el inicio</li>
+        </ul>
+      </div>
+      <div class="strategy-card s-bottomup">
+        <h4>⬆️ Bottom-Up</h4>
+        <ul style="padding-left:1rem; font-size:0.84rem; line-height:1.8;">
+          <li>Se prueban primero los módulos de <strong>bajo nivel</strong></li>
+          <li>Se avanza hacia módulos superiores</li>
+          <li>Usa <strong>Drivers</strong> para simular datos de entrada</li>
+          <li>Ventaja: valida componentes fundamentales primero</li>
+        </ul>
+      </div>
+      <div class="strategy-card s-bigbang">
+        <h4>💥 Big Bang</h4>
+        <ul style="padding-left:1rem; font-size:0.84rem; line-height:1.8;">
+          <li>Se acoplan <strong>todos</strong> los módulos a la vez</li>
+          <li>Reduce cantidad de pruebas</li>
+          <li>Dificulta la detección de errores</li>
+          <li>Requiere todos los módulos probados unitariamente</li>
+          <li><strong>No recomendable</strong> para proyectos largos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">Integración Incremental — Proceso</div>
+    <ol style="padding-left:1.5rem; font-size:0.9rem; line-height:2;">
+      <li>Los módulos se van acoplando progresivamente en conjuntos</li>
+      <li>Tras cada acoplamiento, se prueba la interacción entre módulos</li>
+      <li>Una vez verificado, se agrega un nuevo módulo y se repiten las pruebas</li>
+      <li>El proceso se repite hasta completar la aplicación</li>
+      <li>Cada conjunto debe verificar requisitos funcionales, de rendimiento y seguridad</li>
+    </ol>
+
+    <div class="trap">
+      <strong>⚠️ TRAMPA:</strong> Stub = simula módulos que no existen (Top-Down). Driver = simula datos de entrada (Bottom-Up). Big Bang ≠ recomendado para detectar errores.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 6: SISTEMA Y UAT -->
+<!-- ============================================================ -->
+<div class="section-block" id="sistema">
+  <div class="section-title">🔹 6. Pruebas de Sistema y Aceptación del Usuario (UAT)</div>
+  <div class="section-body">
+    <div class="cards">
+      <div class="card">
+        <h4>🖥️ Pruebas de Sistema</h4>
+        <ul>
+          <li>Validan el sistema completo contra los objetivos originales</li>
+          <li>Ambiente de test similar al de producción</li>
+          <li>Ejercita el sistema como lo haría un usuario real</li>
+          <li>Pueden ir de extremo a extremo (end-to-end)</li>
+          <li>Las realiza el <strong>equipo de testing del proyecto</strong></li>
+          <li>Son caja negra</li>
+          <li>Incluyen funcionales y no funcionales</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>✅ UAT – User Acceptance Test</h4>
+        <ul>
+          <li>Realizadas por <strong>usuarios finales / stakeholders / cliente</strong></li>
+          <li>Validan que el sistema se ajusta a sus requerimientos reales</li>
+          <li>Prueba formal con objetivo de <strong>aprobación del cliente</strong></li>
+          <li>Se realizan <strong>antes</strong> de instalar en producción</li>
+          <li>Caja negra</li>
+          <li>Condiciones de prueba basadas en documento de requerimientos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="trap">
+      <strong>⚠️ TRAMPA CLAVE:</strong> Pruebas de Sistema ≠ UAT.<br>
+      Sistema → ejecutadas por QA del proyecto · UAT → ejecutadas por el usuario/cliente.<br>
+      No confundir: en Sistema el usuario aún NO valida, eso ocurre en UAT.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 7: PRUEBAS COMPLEMENTARIAS -->
+<!-- ============================================================ -->
+<div class="section-block" id="complementarias">
+  <div class="section-title">🔹 7. Pruebas Complementarias</div>
+  <div class="section-body">
+
+    <div class="sub-title">Pruebas de Rendimiento (Performance)</div>
+    <div class="cards">
+      <div class="card">
+        <h4>📈 Carga (Load)</h4>
+        <ul>
+          <li>Verifica comportamiento bajo el volumen máximo <strong>esperado/definido</strong></li>
+          <li>Evalúa capacidad de almacenamiento, procesamiento y cantidad de usuarios</li>
+          <li>Condiciones <strong>previstas y normales</strong></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>💥 Estrés (Stress)</h4>
+        <ul>
+          <li>Somete al sistema <strong>excediendo sus límites</strong> de capacidad</li>
+          <li>Considera situaciones NO previstas originalmente</li>
+          <li>Evalúa cómo falla el sistema en el límite</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>⚡ Rendimiento (Performance)</h4>
+        <ul>
+          <li>Comprueba la <strong>rapidez de respuesta</strong> ante una funcionalidad</li>
+          <li>Evalúa tiempos de respuesta, velocidad, escalabilidad</li>
+          <li>Prueba no funcional</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>⏳ Estabilidad (Soak)</h4>
+        <ul>
+          <li>Mide rapidez de respuesta trabajando en forma <strong>continuada, largos períodos</strong></li>
+          <li>Detecta fugas de memoria, degradación gradual</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>📊 Escalabilidad</h4>
+        <ul>
+          <li>Determina la adaptabilidad del sistema</li>
+          <li>Evalúa cómo maneja incremento progresivo de carga</li>
+          <li>Escalado vertical (más recursos 1 server) vs horizontal (más servers)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🔒 Capacidad</h4>
+        <ul>
+          <li>Define <strong>límites máximos</strong>: número máximo de usuarios o transacciones</li>
+          <li>Determina cuándo el rendimiento se degrada significativamente</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">Otras Pruebas Complementarias</div>
+    <table>
+      <tr><th>Tipo</th><th>Descripción</th></tr>
+      <tr><td><span class="badge badge-blue">Regresión</span></td><td>Tras cambios en el código, verifica que la funcionalidad original NO fue alterada</td></tr>
+      <tr><td><span class="badge badge-green">Alfa</span></td><td>La realiza el usuario en las <strong>instalaciones del desarrollador</strong> (entorno controlado)</td></tr>
+      <tr><td><span class="badge badge-amber">Beta</span></td><td>La realiza el usuario en <strong>sus propias instalaciones</strong> (entorno cercano a producción)</td></tr>
+      <tr><td><span class="badge badge-purple">Smoke Test</span></td><td>Revisión rápida del software para comprobar que funciona y no tiene defectos que interrumpan su operación básica. Se realiza previo a la recepción por el equipo QA o usuario</td></tr>
+      <tr><td><span class="badge badge-red">Usabilidad</span></td><td>Evalúa que sea comprensible y amigable al usuario (UX)</td></tr>
+      <tr><td><span class="badge badge-blue">Compatibilidad</span></td><td>Cómo reacciona el producto en diferentes navegadores, OS, dispositivos</td></tr>
+      <tr><td><span class="badge badge-amber">Robustez</span></td><td>Evalúa reacción ante datos de entrada erróneos</td></tr>
+      <tr><td><span class="badge badge-green">Seguridad</span></td><td>Determina nivel de seguridad: confidencialidad, integridad y disponibilidad</td></tr>
+      <tr><td><span class="badge badge-purple">Exploratorio</span></td><td>Aprende sobre la app, diseña y ejecuta casos simultáneamente. Tiene misión y sesión con tiempo limitado</td></tr>
+    </table>
+
+    <div class="trap">
+      <strong>⚠️ TRAMPAS CLAVE:</strong><br>
+      • Carga ≠ Estrés (Carga = uso esperado; Estrés = exceder límites)<br>
+      • Alfa = desarrollador controla el entorno · Beta = usuario controla el entorno<br>
+      • Smoke Test ≠ pruebas completas (solo verifica que el sistema "arranca")<br>
+      • Regresión se ejecuta SIEMPRE después de cualquier cambio en el código
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 8: JMETER -->
+<!-- ============================================================ -->
+<div class="section-block" id="jmeter">
+  <div class="section-title">🔹 8. Pruebas de Rendimiento con Apache JMeter</div>
+  <div class="section-body">
+
+    <div class="sub-title">8.1 ¿Qué es JMeter?</div>
+    <p>Herramienta open source para pruebas de carga y rendimiento. Simula múltiples usuarios virtuales y mide el desempeño del sistema. Soporta múltiples protocolos.</p>
+
+    <div class="sub-title">8.2 Protocolos Compatibles</div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin:0.75rem 0;">
+      <span class="badge badge-blue">HTTP / HTTPS</span>
+      <span class="badge badge-green">FTP</span>
+      <span class="badge badge-purple">JDBC (Bases de Datos)</span>
+      <span class="badge badge-amber">SOAP / REST</span>
+      <span class="badge badge-red">LDAP</span>
+      <span class="badge badge-blue">JMS</span>
+      <span class="badge badge-green">TCP</span>
+    </div>
+    <div class="trap"><strong>⚠️ TRAMPA:</strong> JMeter NO es solo para web. También prueba bases de datos (JDBC), servicios SOAP/REST, FTP y más.</div>
+
+    <div class="sub-title">8.3 Elementos Principales de JMeter</div>
+
+    <div class="cards">
+      <div class="card">
+        <h4>🧵 Thread Group (Grupo de Hilos)</h4>
+        <ul>
+          <li><strong>Number of Threads</strong>: Número de usuarios virtuales</li>
+          <li><strong>Ramp-Up Period</strong>: Tiempo (seg.) para lanzar TODOS los hilos</li>
+          <li><strong>Loop Count</strong>: Número de repeticiones por hilo</li>
+          <li><strong>Duration</strong>: Tiempo total de ejecución</li>
+          <li>Es el punto de partida de todo Test Plan</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>📡 Samplers</h4>
+        <ul>
+          <li>Realizan las peticiones al servidor</li>
+          <li><strong>HTTP Request</strong>: el más común</li>
+          <li>Configura URL, método (GET/POST), parámetros, body</li>
+          <li>Cada sampler = una petición al sistema bajo prueba</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>👁️ Listeners (Oyentes)</h4>
+        <ul>
+          <li>Visualizan y almacenan los resultados</li>
+          <li><strong>View Results Tree</strong>: detalle de cada petición</li>
+          <li><strong>Summary Report</strong>: resumen estadístico</li>
+          <li><strong>Aggregate Report</strong>: percentiles y throughput</li>
+          <li>Pueden guardar resultados en CSV</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>✅ Assertions (Aserciones)</h4>
+        <ul>
+          <li>Validan que las respuestas sean correctas</li>
+          <li><strong>Response Assertion</strong>: verifica código HTTP (ej. 200 OK)</li>
+          <li><strong>Duration Assertion</strong>: tiempo máximo aceptable</li>
+          <li><strong>Size Assertion</strong>: tamaño de respuesta</li>
+          <li>Si falla → la muestra se marca como ERROR</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>⚙️ Config Elements</h4>
+        <ul>
+          <li><strong>CSV Data Set Config</strong>: parametrización con datos externos</li>
+          <li><strong>HTTP Cookie Manager</strong>: manejo de cookies de sesión</li>
+          <li><strong>HTTP Header Manager</strong>: cabeceras HTTP personalizadas</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🔧 Pre/Post Processors</h4>
+        <ul>
+          <li><strong>Pre-Processor</strong>: se ejecuta antes del sampler</li>
+          <li><strong>Post-Processor</strong>: extrae datos de la respuesta</li>
+          <li><strong>Regular Expression Extractor</strong>: extrae valores con regex</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">8.4 Parámetros del Thread Group – Detalle</div>
+    <table>
+      <tr><th>Parámetro</th><th>Descripción</th><th>Ejemplo</th></tr>
+      <tr><td><strong>Number of Threads</strong></td><td>Usuarios virtuales concurrentes</td><td>100 usuarios</td></tr>
+      <tr><td><strong>Ramp-Up Period</strong></td><td>Tiempo en segundos para lanzar TODOS los hilos (no es la duración total)</td><td>10s → 10 usuarios/segundo</td></tr>
+      <tr><td><strong>Loop Count</strong></td><td>Cuántas veces repite cada hilo</td><td>5 = cada usuario hace 5 requests</td></tr>
+      <tr><td><strong>Duration</strong></td><td>Tiempo total de ejecución (si Infinite = true)</td><td>300s = 5 minutos</td></tr>
+      <tr><td><strong>Startup Delay</strong></td><td>Retraso antes de iniciar el grupo</td><td>30s para esperar que otro grupo termine</td></tr>
+    </table>
+    <div class="trap"><strong>⚠️ TRAMPA:</strong> Ramp-Up ≠ duración total. Si Ramp-Up = 10s y hay 100 threads, se lanza 1 hilo cada 0.1s hasta completar los 100.</div>
+
+    <div class="sub-title">8.5 Métodos HTTP: GET vs POST</div>
+    <div class="compare-grid">
+      <div class="compare-col col-css">
+        <h4>GET</h4>
+        <ul>
+          <li>Obtiene/lee datos del servidor</li>
+          <li>Los parámetros van en la <strong>URL</strong> (query string)</li>
+          <li>Visible en el historial del navegador</li>
+          <li>Puede ser cacheado</li>
+          <li>Menos seguro para datos sensibles</li>
+          <li>Longitud limitada</li>
+          <li>Ejemplo: <code>GET /productos?id=123</code></li>
+        </ul>
+      </div>
+      <div class="compare-col col-xpath">
+        <h4>POST</h4>
+        <ul>
+          <li>Envía datos al servidor (crea/modifica recursos)</li>
+          <li>Los parámetros van en el <strong>body</strong> de la petición</li>
+          <li>No visible en URL · No cacheado</li>
+          <li>Más seguro para datos sensibles</li>
+          <li>Sin límite de tamaño</li>
+          <li>Usado para formularios, JSON payloads</li>
+          <li>Ejemplo: <code>POST /usuarios</code> + body JSON</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">8.6 Generación de Reporte HTML</div>
+    <ol style="padding-left:1.5rem; font-size:0.9rem; line-height:2;">
+      <li>Configurar el Listener <strong>View Results Tree</strong> con un archivo CSV de salida</li>
+      <li>Ejecutar la prueba para generar el CSV</li>
+      <li>Ir a <strong>Tools → Generate HTML Report</strong></li>
+      <li>Indicar: archivo CSV resultante, archivo user.properties, directorio de salida (vacío)</li>
+    </ol>
+
+    <div class="sub-title">8.7 CSV Data Set Config</div>
+    <p style="font-size:0.9rem;">Permite parametrizar las pruebas con datos reales o generados. Se integran datos de herramientas como <strong>Mockaroo</strong>, <strong>Generatedata.com</strong> o <strong>Randat.com</strong> en formato CSV, y JMeter los lee dinámicamente durante la ejecución.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 9: MÉTRICAS -->
+<!-- ============================================================ -->
+<div class="section-block" id="metricas">
+  <div class="section-title">🔹 9. Reportes y Métricas de Calidad</div>
+  <div class="section-body">
+
+    <div class="sub-title">9.1 Fuentes de Reportes en JMeter</div>
+    <div class="cards">
+      <div class="card">
+        <h4>👁️ Listeners</h4>
+        <p>Muestran métricas generales de la ejecución en tiempo real. Ejemplos: View Results Tree, Summary Report, Aggregate Report, Response Time Graph.</p>
+      </div>
+      <div class="card">
+        <h4>🔌 Plugins</h4>
+        <p>Generan reportes y gráficos adicionales a los que provee la versión original. Amplían capacidades de visualización.</p>
+      </div>
+      <div class="card">
+        <h4>📄 Reporte HTML</h4>
+        <p>Consolida las métricas y gráficos más importantes en un informe navegable. Incluye APDEX, tiempos de respuesta, tasa de errores, throughput y gráficos temporales.</p>
+      </div>
+    </div>
+
+    <div class="sub-title">9.2 Métricas Clave</div>
+    <table>
+      <tr><th>Métrica</th><th>Definición</th><th>Unidad</th><th>Interpretación</th></tr>
+      <tr><td><strong>Response Time</strong></td><td>Tiempo total desde que se envía la petición hasta que se recibe la respuesta completa</td><td>ms</td><td>Menor = mejor. Percentiles p90/p95/p99 más representativos que el promedio</td></tr>
+      <tr><td><strong>Latencia</strong></td><td>Tiempo desde la petición hasta el <strong>primer byte</strong> de respuesta</td><td>ms</td><td>Mide tiempo de red + inicio de procesamiento</td></tr>
+      <tr><td><strong>Throughput</strong></td><td>Número de peticiones procesadas por segundo</td><td>req/s</td><td>Mayor = mejor. Indica capacidad del sistema</td></tr>
+      <tr><td><strong>Error %</strong></td><td>Porcentaje de peticiones que resultaron en error</td><td>%</td><td>Si aumenta con más usuarios → inestabilidad</td></tr>
+      <tr><td><strong>Percentil 90/95/99</strong></td><td>El X% de las peticiones respondieron en menos tiempo que este valor</td><td>ms</td><td>P99 alto indica casos extremos problemáticos</td></tr>
+      <tr><td><strong>Average</strong></td><td>Tiempo de respuesta promedio</td><td>ms</td><td>Útil pero no definitorio (distorsionado por outliers)</td></tr>
+      <tr><td><strong>Min / Max</strong></td><td>Tiempo mínimo y máximo de respuesta</td><td>ms</td><td>Max muy alto indica casos problemáticos</td></tr>
+    </table>
+
+    <div class="trap">
+      <strong>⚠️ TRAMPA:</strong> Throughput ≠ Response Time. Throughput = peticiones/segundo (capacidad). Response Time = duración de una petición (rapidez). Pueden ser inversamente proporcionales bajo carga extrema.
+    </div>
+
+    <div class="sub-title">9.3 Response Time Overview (Colores)</div>
+    <div class="apdex-bar">
+      <div class="apdex-seg" style="background:#27ae60; flex:2;">Verde: &lt;500ms</div>
+      <div class="apdex-seg" style="background:#f39c12; flex:1.5;">Amarillo: 500–1500ms</div>
+      <div class="apdex-seg" style="background:#e67e22; flex:1;">Naranja: &gt;1500ms</div>
+      <div class="apdex-seg" style="background:#e74c3c; flex:0.5;">Rojo: Error</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 10: APDEX -->
+<!-- ============================================================ -->
+<div class="section-block" id="apdex">
+  <div class="section-title">🔹 10. Métrica APDEX</div>
+  <div class="section-body">
+    <p>Application Performance Index. Mide la <strong>satisfacción del usuario</strong> en función al rendimiento de la aplicación. Valor entre 0 (peor) y 1 (mejor).</p>
+
+    <div class="formula">
+      <div class="eq">APDEX = (NS + NT/2) / N</div>
+      <small>
+        NS = Solicitudes Satisfactorias (tiempo ≤ umbral satisfactorio)<br>
+        NT = Solicitudes Tolerables (tiempo entre umbral satisfactorio y umbral de frustración)<br>
+        N = Total de solicitudes
+      </small>
+    </div>
+
+    <div class="sub-title">Umbrales</div>
+    <table>
+      <tr><th>Umbral</th><th>Descripción</th><th>Valor típico por defecto</th></tr>
+      <tr><td><strong>Toleration Threshold</strong></td><td>Tiempo máximo tolerable antes de sentir incomodidad</td><td>Configurable en jmeter.properties</td></tr>
+      <tr><td><strong>Frustration Threshold</strong></td><td>Tiempo que provoca experiencia frustrante (4× el umbral tolerable)</td><td>Configurable en jmeter.properties</td></tr>
+    </table>
+
+    <div class="sub-title">Escala de Valores APDEX</div>
+    <div class="apdex-bar" style="margin-bottom:0.5rem;">
+      <div class="apdex-seg" style="background:#27ae60;">0.94–1.00<br><small>Excelente</small></div>
+      <div class="apdex-seg" style="background:#2ecc71;">0.85–0.94<br><small>Buena</small></div>
+      <div class="apdex-seg" style="background:#f1c40f; color:#333;">0.70–0.85<br><small>Aceptable</small></div>
+      <div class="apdex-seg" style="background:#e67e22;">0.50–0.70<br><small>Insatisfactoria</small></div>
+      <div class="apdex-seg" style="background:#e74c3c;">&lt;0.50<br><small>Inaceptable</small></div>
+    </div>
+
+    <div class="trap">
+      <strong>⚠️ TRAMPA:</strong> APDEX = 1 es la mejor experiencia posible. APDEX = 0 es la peor. El índice 0.94 es el límite entre "Buena" y "Excelente". Valores &lt; 0.50 son inaceptables.
+    </div>
+
+    <div class="sub-title">Ejemplo de Cálculo</div>
+    <div class="code-block">
+N = 1000 solicitudes totales
+NS = 600 satisfactorias (tiempo &lt; umbral tolerable)
+NT = 200 tolerables (tiempo entre umbrales)
+
+APDEX = (600 + 200/2) / 1000
+APDEX = (600 + 100) / 1000
+APDEX = 700 / 1000
+APDEX = 0.70 → Aceptable
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 11: SELENIUM -->
+<!-- ============================================================ -->
+<div class="section-block" id="selenium">
+  <div class="section-title">🔹 11. Introducción a Selenium</div>
+  <div class="section-body">
+    <p>Selenium es una suite open source de bibliotecas y herramientas para la <strong>automatización de navegadores web</strong>. Es el proyecto paraguas de tres componentes principales.</p>
+
+    <div class="sub-title">11.1 Componentes Principales</div>
+    <div class="cards">
+      <div class="card">
+        <h4>🚗 Selenium WebDriver</h4>
+        <ul>
+          <li>Biblioteca para controlar navegadores automáticamente</li>
+          <li>API multiplataforma en múltiples lenguajes</li>
+          <li><strong>Lenguajes oficiales:</strong> Java, JavaScript, Python, Ruby, C#</li>
+          <li>Controla navegadores locales y remotos</li>
+          <li>Requiere <strong>drivers</strong> específicos por navegador</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🌐 Selenium Grid</h4>
+        <ul>
+          <li>Grupo de hosts en red que provee infraestructura de navegadores</li>
+          <li>Permite ejecución <strong>paralela</strong> de scripts WebDriver</li>
+          <li>Soporta múltiples navegadores, versiones y sistemas operativos</li>
+          <li>Ideal para pruebas de compatibilidad a escala</li>
+          <li>Iniciado por Philippe Hanrigou en 2008</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>🎬 Selenium IDE</h4>
+        <ul>
+          <li>Herramienta de Record and Playback (R&amp;P)</li>
+          <li><strong>Record</strong>: captura interacciones del usuario como comandos Selenium</li>
+          <li><strong>Playback</strong>: ejecuta el script grabado automáticamente</li>
+          <li>Creado por Shinya Kasatani en 2006</li>
+          <li>Extensión de navegador</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">11.2 Drivers por Navegador</div>
+    <table>
+      <tr><th>Navegador</th><th>Driver</th><th>Sistema Operativo</th><th>Mantenedor</th></tr>
+      <tr><td>Chrome / Chromium</td><td>chromedriver</td><td>Windows / macOS / Linux</td><td>Google</td></tr>
+      <tr><td>Edge</td><td>msedgedriver</td><td>Windows / macOS / Linux</td><td>Microsoft</td></tr>
+      <tr><td>Firefox</td><td>geckodriver</td><td>Windows / macOS / Linux</td><td>Mozilla</td></tr>
+      <tr><td>Opera</td><td>operadriver</td><td>Windows / macOS / Linux</td><td>Opera Software</td></tr>
+      <tr><td>Internet Explorer</td><td>IEDriverServer</td><td>Windows</td><td>Selenium Project</td></tr>
+      <tr><td>Safari</td><td>safaridriver</td><td>macOS</td><td>Apple (Built-in)</td></tr>
+    </table>
+
+    <div class="sub-title">11.3 Métodos Principales de WebDriver</div>
+    <table>
+      <tr><th>Método</th><th>Retorno</th><th>Descripción</th></tr>
+      <tr><td><code>get(url)</code></td><td>void</td><td>Carga una página web en el navegador actual</td></tr>
+      <tr><td><code>getCurrentUrl()</code></td><td>String</td><td>Retorna la URL actualmente cargada</td></tr>
+      <tr><td><code>getTitle()</code></td><td>String</td><td>Retorna el título (&lt;title&gt;) de la página actual</td></tr>
+      <tr><td><code>findElement(By by)</code></td><td>WebElement</td><td>Encuentra el primer elemento que coincide con el localizador</td></tr>
+      <tr><td><code>findElements(By by)</code></td><td>List&lt;WebElement&gt;</td><td>Encuentra todos los elementos que coinciden</td></tr>
+      <tr><td><code>close()</code></td><td>void</td><td>Cierra la ventana actual</td></tr>
+      <tr><td><code>quit()</code></td><td>void</td><td>Cierra todas las ventanas y termina el driver</td></tr>
+    </table>
+
+    <div class="sub-title">11.4 Métodos de WebElement</div>
+    <table>
+      <tr><th>Método</th><th>Descripción</th></tr>
+      <tr><td><code>click()</code></td><td>Hace click en el elemento</td></tr>
+      <tr><td><code>sendKeys(CharSequence keys)</code></td><td>Simula escritura en el elemento</td></tr>
+      <tr><td><code>clear()</code></td><td>Limpia el valor de un campo input</td></tr>
+      <tr><td><code>getText()</code></td><td>Obtiene el texto visible del elemento (incluye sub-elementos)</td></tr>
+      <tr><td><code>getAttribute(name)</code></td><td>Obtiene el valor de un atributo HTML</td></tr>
+      <tr><td><code>isSelected()</code></td><td>Indica si un checkbox/radio está seleccionado</td></tr>
+      <tr><td><code>isEnabled()</code></td><td>Indica si el elemento está habilitado</td></tr>
+      <tr><td><code>isDisplayed()</code></td><td>Indica si el elemento es visible</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 12: HTML -->
+<!-- ============================================================ -->
+<div class="section-block" id="html">
+  <div class="section-title">🔹 12. Estructura HTML y Elementos</div>
+  <div class="section-body">
+    <div class="sub-title">12.1 Estructura Estándar HTML</div>
+    <div class="code-block">
+<span class="kw">&lt;!DOCTYPE html&gt;</span>
+<span class="kw">&lt;html&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="cm">&lt;!-- Información que lee el navegador: título, charset, CSS, meta --&gt;</span>
+    <span class="kw">&lt;title&gt;</span><span class="str">Mi Página</span><span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="cm">&lt;!-- Contenido que ve el usuario: botones, formularios, texto --&gt;</span>
+    <span class="kw">&lt;input</span> id=<span class="str">"myID"</span> name=<span class="str">"myName"</span> class=<span class="str">"bold"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;button&gt;</span><span class="str">Click me</span><span class="kw">&lt;/button&gt;</span>
+    <span class="kw">&lt;a</span> href=<span class="str">"https://example.com"</span><span class="kw">&gt;</span><span class="str">Enlace</span><span class="kw">&lt;/a&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span>
+    </div>
+
+    <div class="sub-title">12.2 Anatomía de un Elemento HTML</div>
+    <div class="code-block">
+<span class="cm">&lt;!-- Estructura básica de un elemento --&gt;</span>
+<span class="kw">&lt;p</span> class=<span class="str">"normal"</span><span class="kw">&gt;</span><span class="str">Esto es un párrafo</span><span class="kw">&lt;/p&gt;</span>
+<span class="cm">  ↑          ↑                  ↑             ↑</span>
+<span class="cm"> tag    nombre atributo        contenido    cierre</span>
+<span class="cm">        + valor atributo</span>
+    </div>
+
+    <div class="sub-title">12.3 Elementos Comunes</div>
+    <table>
+      <tr><th>Tag</th><th>Descripción</th><th>Atributos importantes</th></tr>
+      <tr><td><code>&lt;input&gt;</code></td><td>Campo de entrada de datos</td><td>id, name, class, type, value</td></tr>
+      <tr><td><code>&lt;button&gt;</code></td><td>Botón interactivo</td><td>id, name, class, type</td></tr>
+      <tr><td><code>&lt;a&gt;</code></td><td>Hipervínculo / enlace</td><td>href, id, class, aria-label</td></tr>
+      <tr><td><code>&lt;div&gt;</code></td><td>Contenedor de bloque</td><td>id, class</td></tr>
+      <tr><td><code>&lt;form&gt;</code></td><td>Formulario</td><td>action, method</td></tr>
+      <tr><td><code>&lt;table&gt;</code></td><td>Tabla de datos</td><td>id, class</td></tr>
+      <tr><td><code>&lt;img&gt;</code></td><td>Imagen</td><td>src, alt, id, class</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 13: LOCATORS -->
+<!-- ============================================================ -->
+<div class="section-block" id="locators">
+  <div class="section-title">🔹 13. Estrategias de Localización (Locators)</div>
+  <div class="section-body">
+    <p>Selenium WebDriver provee 8 estrategias básicas de localización. Herramientas como Chrome DevTools, Firefox Developer Tools y extensiones como SelectorsHub ayudan a identificar y generar estos localizadores.</p>
+
+    <div class="sub-title">13.1 Resumen de Localizadores</div>
+    <table>
+      <tr><th>Localizador</th><th>Encuentra elementos por</th><th>Código Java</th><th>Uso típico</th></tr>
+      <tr><td><strong>ID</strong></td><td>Valor del atributo <code>id</code></td><td><code>By.id("myID")</code></td><td>Cuando el id es único e inmutable</td></tr>
+      <tr><td><strong>Name</strong></td><td>Valor del atributo <code>name</code></td><td><code>By.name("myName")</code></td><td>Formularios con atributo name</td></tr>
+      <tr><td><strong>ClassName</strong></td><td>Valor del atributo <code>class</code></td><td><code>By.className("bold")</code></td><td>Elementos dinámicos con clase fija</td></tr>
+      <tr><td><strong>TagName</strong></td><td>Nombre del tag HTML</td><td><code>By.tagName("input")</code></td><td>Cuando el tag es único o se quiere lista</td></tr>
+      <tr><td><strong>LinkText</strong></td><td>Texto exacto del enlace</td><td><code>By.linkText("REGISTER")</code></td><td>Solo para elementos &lt;a&gt; con texto completo</td></tr>
+      <tr><td><strong>PartialLinkText</strong></td><td>Texto parcial del enlace</td><td><code>By.partialLinkText("youtube")</code></td><td>Solo para &lt;a&gt; cuando texto es largo</td></tr>
+      <tr><td><strong>CSS Selector</strong></td><td>Patrón CSS</td><td><code>By.cssSelector("a[href='/sponsor']")</code></td><td>Localizadores complejos y rápidos</td></tr>
+      <tr><td><strong>XPath</strong></td><td>Expresión XML Path</td><td><code>By.xpath("//input[@name='x']")</code></td><td>Localizadores flexibles, navegación DOM</td></tr>
+    </table>
+
+    <div class="sub-title">13.2 Ejemplos con HTML dado</div>
+    <div class="code-block">
+<span class="cm">&lt;!-- Elemento HTML de referencia: --&gt;</span>
+<span class="kw">&lt;input</span> id=<span class="str">"myID"</span> name=<span class="str">"myName"</span> class=<span class="str">"bold"</span><span class="kw">&gt;</span>
+
+<span class="cm">// Por ID:</span>
+<span class="kw">WebElement</span> el = driver.findElement(By.id(<span class="str">"myID"</span>));
+
+<span class="cm">// Por Name:</span>
+<span class="kw">WebElement</span> el = driver.findElement(By.name(<span class="str">"myName"</span>));
+
+<span class="cm">// Por ClassName:</span>
+<span class="kw">WebElement</span> el = driver.findElement(By.className(<span class="str">"bold"</span>));
+    </div>
+
+    <div class="code-block">
+<span class="cm">&lt;!-- Elemento enlace: --&gt;</span>
+<span class="kw">&lt;a</span> href=<span class="str">"https://www.youtube.com"</span><span class="kw">&gt;</span><span class="str">REGISTER</span><span class="kw">&lt;/a&gt;</span>
+
+<span class="cm">// Por LinkText (texto exacto):</span>
+<span class="kw">WebElement</span> el = driver.findElement(By.linkText(<span class="str">"REGISTER"</span>));
+
+<span class="cm">// Por PartialLinkText (texto parcial):</span>
+<span class="kw">WebElement</span> el = driver.findElement(By.partialLinkText(<span class="str">"youtube"</span>));
+    </div>
+
+    <div class="sub-title">13.3 Pros y Contras de Cada Localizador</div>
+    <table>
+      <tr><th>Localizador</th><th>Pros</th><th>Contras</th><th>Caso de uso típico</th></tr>
+      <tr><td>Por atributo (id, name, class)</td><td>Fácil de usar</td><td>Atributos no siempre disponibles</td><td>Elementos con atributos inmutables</td></tr>
+      <tr><td>Link Text (total/parcial)</td><td>Fácil de usar</td><td>Solo para enlaces &lt;a&gt;</td><td>Navegación por texto de link</td></tr>
+      <tr><td>Tag Name</td><td>Fácil de usar</td><td>Difícil seleccionar uno específico cuando el tag se repite</td><td>Tag único o posición fija en DOM</td></tr>
+      <tr><td>CSS Selector o XPath</td><td>Muy poderoso</td><td>No siempre fácil escribir selectores robustos</td><td>Localizadores complejos</td></tr>
+      <tr><td>Localizadores relativos</td><td>Enfoque en lenguaje natural</td><td>Necesita combinarse con otros localizadores</td><td>Posición relativa (arriba, abajo, cerca)</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 14: XPATH -->
+<!-- ============================================================ -->
+<div class="section-block" id="xpath">
+  <div class="section-title">🔹 14. XPath – XML Path Language</div>
+  <div class="section-body">
+    <p>XPath (XML Path Language) es una sintaxis para encontrar cualquier elemento en una página web usando la estructura HTML del DOM. Permite navegación bidireccional (padre-hijo e hijo-padre).</p>
+
+    <div class="sub-title">14.1 Sintaxis Estándar XPath</div>
+    <div class="formula">
+      <div class="eq" style="font-size:1.1rem; font-family:monospace;">XPath = //tagname[@attribute='value']</div>
+      <small>
+        <strong>//</strong> = selecciona el nodo actual (busca en todo el documento) &nbsp;|&nbsp;
+        <strong>tagname</strong> = nombre de la etiqueta &nbsp;|&nbsp;
+        <strong>@</strong> = selecciona atributo &nbsp;|&nbsp;
+        <strong>attribute</strong> = nombre del atributo &nbsp;|&nbsp;
+        <strong>value</strong> = valor del atributo
+      </small>
+    </div>
+
+    <div class="sub-title">14.2 XPath Absoluto vs. XPath Relativo</div>
+    <div class="compare-grid">
+      <div class="compare-col" style="background:#fee2e2; border-color:#fca5a5;">
+        <h4 style="color:#991b1b;">⚠️ XPath Absoluto</h4>
+        <ul>
+          <li>Comienza con <strong>/</strong> (barra simple)</li>
+          <li>Navega desde el <strong>nodo raíz</strong> (&lt;html&gt;)</li>
+          <li>Ruta completa y directa al elemento</li>
+          <li><strong>Frágil</strong>: si la estructura HTML cambia, falla</li>
+          <li>Difícil de mantener</li>
+        </ul>
+        <div class="code-block" style="margin-top:0.5rem; font-size:0.78rem;">
+/html[1]/body[1]/section[2]/div[1]/div[2]/a[1]
+        </div>
+      </div>
+      <div class="compare-col" style="background:#dcfce7; border-color:#86efac;">
+        <h4 style="color:#14532d;">✅ XPath Relativo (Recomendado)</h4>
+        <ul>
+          <li>Comienza con <strong>//</strong> (doble barra)</li>
+          <li>Busca en cualquier parte del documento</li>
+          <li>Más robusto ante cambios de estructura</li>
+          <li><strong>Recomendado</strong> para automatización</li>
+          <li>Permite operadores y funciones avanzadas</li>
+        </ul>
+        <div class="code-block" style="margin-top:0.5rem; font-size:0.78rem;">
+//input[@name='myName']
+//*[@name='myName']
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-title">14.3 Operadores Lógicos en XPath</div>
+    <div class="cards">
+      <div class="card">
+        <h4>OR — Alguna condición</h4>
+        <p>Se cumple alguna de las condiciones definidas o ambas.</p>
+        <div class="code-block" style="font-size:0.78rem;">
+//*[@src='/images/mail.png' or @xpath='1']
+        </div>
+        <p style="font-size:0.82rem; margin-top:0.4rem;">Encuentra elementos que tengan src='/images/mail.png' O que tengan xpath='1'</p>
+      </div>
+      <div class="card">
+        <h4>AND — Ambas condiciones</h4>
+        <p>Se deben cumplir <strong>ambas</strong> condiciones definidas.</p>
+        <div class="code-block" style="font-size:0.78rem;">
+//*[@class='social-icon' and @src='/images/twitter.png']
+        </div>
+        <p style="font-size:0.82rem; margin-top:0.4rem;">Encuentra elementos que tengan AMBOS atributos con esos valores</p>
+      </div>
+      <div class="card">
+        <h4>NOT — Negación</h4>
+        <p>Excluye los elementos que cumplan la condición.</p>
+        <div class="code-block" style="font-size:0.78rem;">
+//*[@type='submit' and not(@id='my-button')]
+        </div>
+        <p style="font-size:0.82rem; margin-top:0.4rem;">Todos los botones submit excepto el que tenga ese id</p>
+      </div>
+    </div>
+
+    <div class="sub-title">14.4 Funciones Avanzadas de XPath</div>
+    <div class="cards">
+      <div class="card">
+        <h4>contains() — Contiene (parcial)</h4>
+        <p>Busca elementos cuyo atributo <strong>contiene</strong> un valor parcial. Útil para atributos dinámicos.</p>
+        <div class="code-block" style="font-size:0.78rem;">
+//*[contains(@id, 'message')]
+//*[contains(@href, 'github')]
+//*[contains(@class, 'btn')]
+        </div>
+        <p style="font-size:0.82rem; margin-top:0.4rem;">Encontrará "message-error", "message-success", etc.</p>
+      </div>
+      <div class="card">
+        <h4>starts-with() — Empieza con</h4>
+        <p>Busca elementos cuyo atributo <strong>comienza</strong> con un valor. Ideal cuando los IDs cambian al final.</p>
+        <div class="code-block" style="font-size:0.78rem;">
+//*[starts-with(@id, 'user')]
+//a[starts-with(@href, 'https')]
+        </div>
+        <p style="font-size:0.82rem; margin-top:0.4rem;">Encontrará "user-123", "user-456", etc.</p>
+      </div>
+      <div class="card">
+        <h4>text() — Texto exacto</h4>
+        <p>Encuentra el elemento cuyo texto visible coincide <strong>exactamente</strong> con el indicado.</p>
+        <div class="code-block" style="font-size:0.78rem;">
+//*[text()='Historia']
+//td[text()='UserID']
+//button[text()='Enviar']
+        </div>
+        <p style="font-size:0.82rem; margin-top:0.4rem;">Coincidencia exacta del texto visible en página</p>
+      </div>
+    </div>
+
+    <div class="sub-title">14.5 Tabla Completa de Funciones XPath</div>
+    <table>
+      <tr><th>Categoría</th><th>Sintaxis</th><th>Descripción</th><th>Ejemplo</th></tr>
+      <tr><td>Atributos</td><td><code>contains(@attr, 'str')</code></td><td>El atributo contiene la cadena</td><td><code>//a[contains(@href, 'github')]</code></td></tr>
+      <tr><td>Atributos</td><td><code>starts-with(@attr, 'str')</code></td><td>El atributo empieza con la cadena</td><td><code>//a[starts-with(@href, 'https')]</code></td></tr>
+      <tr><td>Atributos</td><td><code>ends-with(@attr, 'str')</code></td><td>El atributo termina con la cadena</td><td><code>//a[ends-with(@href, '.pdf')]</code></td></tr>
+      <tr><td>Texto</td><td><code>text()='string'</code></td><td>Texto exacto del elemento</td><td><code>//*[text()='click']</code></td></tr>
+      <tr><td>Nodos hijo</td><td><code>[index]</code></td><td>Selecciona el n-ésimo hijo</td><td><code>//div/*[0]</code></td></tr>
+      <tr><td>Booleano</td><td><code>or</code></td><td>Operador lógico O</td><td><code>[@type='submit' or @type='reset']</code></td></tr>
+      <tr><td>Booleano</td><td><code>and</code></td><td>Operador lógico Y</td><td><code>[@type='submit' and @id='btn']</code></td></tr>
+      <tr><td>Booleano</td><td><code>not()</code></td><td>Negación lógica</td><td><code>[not(@id='my-button')]</code></td></tr>
+    </table>
+
+    <div class="sub-title">14.6 Ejes (Axes) XPath — Navegación Relativa</div>
+    <table>
+      <tr><th>Eje</th><th>Descripción</th><th>Ejemplo</th></tr>
+      <tr><td><code>following::item</code></td><td>Nodos que vienen DESPUÉS del nodo actual</td><td><code>//*[@type='text']//following::input</code></td></tr>
+      <tr><td><code>descendant::item</code></td><td>Elementos descendientes (hijos, nietos...)</td><td><code>//*[@id='parent']//descendant::a</code></td></tr>
+      <tr><td><code>ancestor::item</code></td><td>Ancestros del nodo actual</td><td><code>//input[@id='x']//ancestor::label</code></td></tr>
+      <tr><td><code>child::item</code></td><td>Hijos directos del nodo actual</td><td><code>//*[@id='x']//child::li</code></td></tr>
+      <tr><td><code>parent::item</code></td><td>Padre del nodo actual</td><td><code>//*[@id='x']//parent::div</code></td></tr>
+      <tr><td><code>preceding::item</code></td><td>Nodos que vienen ANTES del nodo actual</td><td><code>//*[@id='x']//preceding::input</code></td></tr>
+      <tr><td><code>following-sibling::item</code></td><td>Hermanos que siguen al nodo actual</td><td><code>//*[@id='x']//following-sibling::input</code></td></tr>
+    </table>
+
+    <div class="trap">
+      <strong>⚠️ XPath CLAVE:</strong><br>
+      • XPath absoluto empieza con <code>/</code> (frágil, no recomendado)<br>
+      • XPath relativo empieza con <code>//</code> (robusto, recomendado)<br>
+      • <code>contains()</code> = coincidencia parcial · <code>text()</code> = coincidencia exacta<br>
+      • XPath permite subir en el DOM (padre, ancestro) — CSS no puede
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 15: CSS SELECTORS -->
+<!-- ============================================================ -->
+<div class="section-block" id="css">
+  <div class="section-title">🔹 15. CSS Selectors y Diferencias con XPath</div>
+  <div class="section-body">
+
+    <div class="sub-title">15.1 Estructura Básica CSS Selector</div>
+    <div class="formula">
+      <div class="eq" style="font-size:1.1rem; font-family:monospace;">nombreElemento[nombreAtributo='valorAtributo']</div>
+      <small>Ejemplo: <code>a[href='/sponsor']</code> &nbsp;|&nbsp; <code>input[type='text']</code> &nbsp;|&nbsp; <code>.form-control</code> &nbsp;|&nbsp; <code>#user</code></small>
+    </div>
+
+    <div class="sub-title">15.2 Selectores CSS Básicos</div>
+    <table>
+      <tr><th>Categoría</th><th>Sintaxis</th><th>Ejemplo</th><th>Descripción</th></tr>
+      <tr><td>Universal</td><td><code>*</code></td><td><code>*</code></td><td>Selecciona todos los elementos</td></tr>
+      <tr><td>Tipo</td><td><code>elementName</code></td><td><code>input</code></td><td>Selecciona todos los &lt;input&gt;</td></tr>
+      <tr><td>Clase</td><td><code>.classname</code></td><td><code>.form-control</code></td><td>Elementos con esa clase</td></tr>
+      <tr><td>ID</td><td><code>#id</code></td><td><code>#my-text-id</code></td><td>Elemento con ese id</td></tr>
+      <tr><td>Atributo</td><td><code>[attr]</code></td><td><code>[target]</code></td><td>Elementos con ese atributo</td></tr>
+      <tr><td>Atributo = valor</td><td><code>[attr=value]</code></td><td><code>[target="_blank"]</code></td><td>Atributo igual al valor</td></tr>
+      <tr><td>Atributo contiene</td><td><code>[attr~=value]</code></td><td><code>[title~=hands]</code></td><td>Atributo contiene la palabra</td></tr>
+      <tr><td>Empieza con</td><td><code>[attr^=value]</code></td><td><code>a[href^="https"]</code></td><td>Atributo empieza con valor</td></tr>
+      <tr><td>Termina con</td><td><code>[attr$=value]</code></td><td><code>a[href$=".pdf"]</code></td><td>Atributo termina con valor</td></tr>
+      <tr><td>Contiene cadena</td><td><code>[attr*=value]</code></td><td><code>a[href*="github"]</code></td><td>Atributo contiene la cadena</td></tr>
+    </table>
+
+    <div class="sub-title">15.3 Atajos CSS Especiales</div>
+    <table>
+      <tr><th>Sintaxis</th><th>Ejemplo</th><th>Descripción</th></tr>
+      <tr><td><code>.class</code></td><td><code>.header</code></td><td>Selecciona elementos cuyo atributo class es "header"</td></tr>
+      <tr><td><code>#id</code></td><td><code>#user</code></td><td>Selecciona el elemento cuyo atributo id es "user"</td></tr>
+      <tr><td><code>*</code></td><td><code>*</code></td><td>Selecciona todos los elementos</td></tr>
+    </table>
+
+    <div class="code-block">
+<span class="cm">// Ejemplos de uso en Selenium:</span>
+driver.findElement(By.cssSelector(<span class="str">"input[name='user']"</span>));
+driver.findElement(By.cssSelector(<span class="str">".form-control"</span>));
+driver.findElement(By.cssSelector(<span class="str">"#submit-btn"</span>));
+driver.findElement(By.cssSelector(<span class="str">"a[href^='https']"</span>));
+driver.findElement(By.cssSelector(<span class="str">"a[href$='.pdf']"</span>));
+    </div>
+
+    <div class="sub-title">15.4 Diferencias CSS Selector vs XPath ⚠️ CLAVE</div>
+    <div class="compare-grid">
+      <div class="compare-col col-css">
+        <h4>CSS Selector</h4>
+        <ul>
+          <li>✅ <strong>Más rápido</strong> en performance</li>
+          <li>✅ Más legible y simple</li>
+          <li>✅ Usado con más frecuencia</li>
+          <li>✅ Directamente soportado por navegadores</li>
+          <li>❌ Solo navegación <strong>descendente</strong> (padre → hijo)</li>
+          <li>❌ No puede navegar al padre o elemento previo</li>
+          <li>❌ No puede localizar por texto visible (<code>text()</code> no existe)</li>
+          <li>❌ Menos flexible para estructuras complejas</li>
+        </ul>
+      </div>
+      <div class="compare-col col-xpath">
+        <h4>XPath</h4>
+        <ul>
+          <li>✅ <strong>Más potente y flexible</strong></li>
+          <li>✅ Navegación <strong>bidireccional</strong> (padre ↕ hijo)</li>
+          <li>✅ Puede localizar por texto visible (<code>text()</code>)</li>
+          <li>✅ Funciones avanzadas: contains(), starts-with()</li>
+          <li>✅ Puede seleccionar por posición relativa</li>
+          <li>❌ <strong>Más lento</strong> en performance</li>
+          <li>❌ Más verboso y complejo de escribir</li>
+          <li>❌ Más difícil de leer para mantenimiento</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-title">15.5 Tabla Comparativa CSS vs XPath</div>
+    <table>
+      <tr><th>Característica</th><th>CSS Selector</th><th>XPath</th></tr>
+      <tr><td>Velocidad</td><td>✅ Más rápido</td><td>⚠️ Más lento</td></tr>
+      <tr><td>Legibilidad</td><td>✅ Más simple</td><td>⚠️ Más complejo</td></tr>
+      <tr><td>Dirección de navegación</td><td>Solo descendente (padre→hijo)</td><td>Bidireccional (puede subir al padre)</td></tr>
+      <tr><td>Localización por texto</td><td>❌ No disponible</td><td>✅ text() function</td></tr>
+      <tr><td>Funciones avanzadas</td><td>Limitadas</td><td>contains(), starts-with(), text()</td></tr>
+      <tr><td>Atributos dinámicos</td><td>Limitado</td><td>✅ contains() y starts-with()</td></tr>
+      <tr><td>Compatibilidad</td><td>Nativa en navegadores</td><td>Evaluada por motor XPath</td></tr>
+    </table>
+
+    <div class="trap">
+      <strong>⚠️ REGLA CLAVE:</strong><br>
+      CSS = más rápido, más simple, solo desciende en el DOM.<br>
+      XPath = más potente, puede subir en el DOM, permite localizar por texto visible.<br>
+      Si necesitas navegar al padre o localizar por texto → usa <strong>XPath</strong>.<br>
+      Si priorizas velocidad y simplicidad → usa <strong>CSS</strong>.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- QUICK REFERENCE FINAL -->
+<!-- ============================================================ -->
+<div class="section-block">
+  <div class="section-title">🔥 Resumen de TRAMPAS y Puntos Clave para el Examen</div>
+  <div class="section-body">
+    <div class="qref">
+      <dt>Verificación vs Validación</dt>
+      <dd>Verificación = "correctamente" = proceso = estática | Validación = "correcto" = producto = dinámica</dd>
+
+      <dt>V-Model: Correspondencias</dt>
+      <dd>Requisitos ↔ UAT | Diseño Sistema ↔ Pruebas Sistema | Arquitectura ↔ Integración | Componentes ↔ Unitarias</dd>
+
+      <dt>Carga vs Estrés</dt>
+      <dd>Carga = uso esperado/definido (dentro de límites) | Estrés = excede límites (situaciones no previstas)</dd>
+
+      <dt>Alpha vs Beta</dt>
+      <dd>Alfa = usuario en instalaciones del DESARROLLADOR | Beta = usuario en sus PROPIAS instalaciones</dd>
+
+      <dt>Sistema vs UAT</dt>
+      <dd>Sistema = equipo de QA | UAT = usuario final / cliente / stakeholder</dd>
+
+      <dt>JMeter Ramp-Up</dt>
+      <dd>Ramp-Up ≠ duración total. Es el tiempo para LANZAR todos los hilos, no el tiempo que corren.</dd>
+
+      <dt>Throughput vs Response Time</dt>
+      <dd>Throughput = peticiones/segundo (capacidad) | Response Time = duración de una petición (rapidez)</dd>
+
+      <dt>APDEX Fórmula</dt>
+      <dd>APDEX = (NS + NT/2) / N → Excelente ≥ 0.94 | Buena 0.85-0.94 | Inaceptable &lt;0.50</dd>
+
+      <dt>Stub vs Driver</dt>
+      <dd>Stub = simula módulos no disponibles (Top-Down) | Driver = simula datos de entrada (Bottom-Up)</dd>
+
+      <dt>XPath Absoluto vs Relativo</dt>
+      <dd>Absoluto = empieza con / (frágil) | Relativo = empieza con // (recomendado, robusto)</dd>
+
+      <dt>CSS vs XPath — Navegación</dt>
+      <dd>CSS = solo desciende (padre→hijo) | XPath = bidireccional (puede subir al padre)</dd>
+
+      <dt>GET vs POST</dt>
+      <dd>GET = parámetros en URL (visible, cacheable, menos seguro) | POST = parámetros en body (más seguro, sin límite de tamaño)</dd>
+
+      <dt>Smoke Test</dt>
+      <dd>No es prueba completa. Solo verifica que el sistema "arranca" y sus funciones básicas funcionan.</dd>
+
+      <dt>Pruebas Unitarias</dt>
+      <dd>Caja blanca · realiza el desarrollador · NO prueban integración ni UI · basadas en diseño detallado.</dd>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div style="background:#1a3a5c; color:#a8c8e8; text-align:center; padding:1rem; font-size:0.82rem;">
+  Guía ACS – Examen Teórico · Cubre 100% del temario · Fundamentos · JMeter · Métricas · Selenium · Localizadores
+</div>
+
+</body>
+</html>
